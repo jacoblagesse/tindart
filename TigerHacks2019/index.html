@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TindArt</title>
+        <link href="C:\Users\vwei\Desktop\TigerHacks2019\style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <header>
+            <h1 class="title">TindArt</h1>
+        </header>
+
+        <body>
+            <main>
+                <div class="intro">
+                    <h2>Tinder for Artists</h2>
+                    <p>TindaArt is a way to connect artists and art-lovers all around the world.</p>
+                </div>
+
+                <div class="button">
+                    <a class="btn btn-primary" href="C:\Users\vwei\Desktop\TigerHacks2019\artLover.html" role="button">I'm an Art Lover</a>
+                    <a class="btn btn-primary" href="#" role="button">I'm an Artist</a>
+                </div>
+
+                <div class="slideshow-container">
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">1 / 3</div>
+                        <img src="C:\Users\vwei\Desktop\TigerHacks2019\images\abstract.jpg" style="width:100%">
+                        <div class="text">Steve Johnson</div>
+                    </div>
+                        
+                    <div class="mySlides fade">
+                      <div class="numbertext">2 / 3</div>
+                      <img src="C:\Users\vwei\Desktop\TigerHacks2019\images\mountains.jpg" style="width:100%">
+                      <div class="text">Roberto Shumski</div>
+                    </div>
+                        
+                    <div class="mySlides fade">
+                      <div class="numbertext">3 / 3</div>
+                      <img src="C:\Users\vwei\Desktop\TigerHacks2019\images\scenic-view.jpg" style="width:100%">
+                      <div class="text">Stephen Seeber</div>
+                    </div>
+                        
+                </div> <!--slideshow-container-->
+                <br>
+
+                <div style="text-align:center">
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                </div>
+
+                <div class="features">
+                    <div class="cols">
+
+                        <div class="col">
+                            <h3>Sign Up</h3>
+                            <p>Make an account to save your favorite pieces of art, find your favorite artists, and join a worldwide community of artists.</p>
+                        </div>
+
+                        <div class="col">
+                            <h3>Tailor Your Tastes</h3>
+                            <p>Choose the styles, artists, and types of art that you currently love.</p>
+                        </div>
+
+                        <div class="col">
+                            <h3>Find your Fashion</h3>
+                            <p>As you swipe more and more, our app finds the art that you love most.</p>
+                        </div>
+
+                    </div> <!-- cols -->
+                </div> <!-- features -->
+            </main>
+        </body>
+    </body>
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
+</html>
