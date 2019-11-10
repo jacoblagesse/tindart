@@ -12,6 +12,13 @@ class ArtForm(ModelForm):
             'artwork': (''),
         }
 
+class ArtworkForm(ModelForm):
+    class Meta:
+        model = Art
+        fields = ()
+        labels = {
+        }
+
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
     last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')

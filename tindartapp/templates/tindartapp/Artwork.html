@@ -1,3 +1,5 @@
+{% load static %}
+{% load bootstrap4 %}
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -141,31 +143,18 @@ img.rounded-corners{
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-  <img src="download.jpg" height="600" style="width:100%" class="wdn-stretch rounded-corners">
-  <div class="name">[Username]</div>
-  <div class="bio">[Bio]</div>
+  <img src="/media/{{artwork.artwork}}" height="600" style="width:100%" class="wdn-stretch rounded-corners">
+  <div class="name">{{ artwork.user }}</div>
 </div>
 
-<div class="mySlides fade">
-  <img src="download-1.jpg" height="600" style="width:100%" class="wdn-stretch rounded-corners">
-  <div class="name">[Username]</div>
-  <div class="bio">[Bio]</div>
-</div>
+<form method="post" class="form" id="textform">
+    {% csrf_token %}
+    {% bootstrap_form form %}     
+</form>
 
-<div class="mySlides fade">
-  <img src="download-2.jpg" height="600" style="width:100%" class="wdn-stretch rounded-corners" >
-  <div class="name">[Username]</div>
-  <div class="bio">[Bio]</div>
-</div>
-
-<div class="mySlides fade">
-  <img src="download-2.jpg" height="600" style="width:100%" class="wdn-stretch rounded-corners">
-  <div class="name">[Username]</div>
-  <div class="bio">[Bio]</div>
-</div>
 <div class='x'>
-<img src="dislike.jpg" class='y'>
-<img src="like.jpg" class='y'>
+<input type='image' name='like' form='textform' src="{% static 'tindartapp/images/dislike.jpg' %}" class='y'>
+<input type='image' name='dislike' form='textform' src="{% static 'tindartapp/images/like.jpg' %}" class='y'>
 </div>
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -179,6 +168,7 @@ var slideIndex = 1;
 showSlides(slideIndex);
 
 function plusSlides(n) {
+  console.log
   showSlides(slideIndex += n);
 }
 
