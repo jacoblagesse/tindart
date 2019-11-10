@@ -1,1 +1,1 @@
-web: gunicorn tindartapp.wsgi
+web: gunicorn tindart.wsgi
