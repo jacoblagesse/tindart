@@ -20,7 +20,7 @@ img {
 .y{
   max-width: 100px;
   max-height: 100px;
-  margin: 10%
+  margin: 5%
 }
 /* Slideshow container */
 .slideshow-container {
@@ -122,6 +122,18 @@ img.rounded-corners{
   animation-duration: 1.5s;
 }
 
+.dislikes {
+  float: left;
+  display: inline;
+  margin-top: 12.5%;
+}
+.likes {
+  float: right;
+  display: inline;
+  margin-top: 12.5%;
+  margin-right: 12.5%;
+}
+
 @-webkit-keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
@@ -140,6 +152,8 @@ img.rounded-corners{
 </head>
 <body>
 
+<a class="btn btn-primary" href="{% url 'art' %}" role="button" style="text-align: center">Upload your own!</a>
+
 <div class="slideshow-container">
 
 <div class="mySlides fade">
@@ -147,17 +161,19 @@ img.rounded-corners{
   <div class="name">{{ artwork.user }}</div>
 </div>
 
-<form method="post" class="form" id="textform">
+<form method="post" class="form" id="likeform">
     {% csrf_token %}
     {% bootstrap_form form %}     
 </form>
-
+<form method="post" class="form" id="dislikeform">
+    {% csrf_token %}
+    {% bootstrap_form form %}     
+</form>
 <div class='x'>
-<input type='image' name='like' form='textform' src="{% static 'tindartapp/images/dislike.jpg' %}" class='y'>
-<input type='image' name='dislike' form='textform' src="{% static 'tindartapp/images/like.jpg' %}" class='y'>
+<input type='image' name='dislike' value='dislike' form='dislikeform' src="{% static 'tindartapp/images/dislike.jpg' %}" class='y'>
+<input type='image' form='likeform' name='like' value='like' src="{% static 'tindartapp/images/like.jpg' %}" class='y'>
+<h1 class='likes'>{{ artwork.likes }}</h1>
 </div>
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
 
 </div>
 <br>

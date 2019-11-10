@@ -24,55 +24,31 @@ class Artworks(UpdateView):
     form_class = ArtworkForm
     template_name = 'tindartapp/Artwork.html'
     #pk_url_kwarg = 'artwork_id' 
-    disliking = False
-    context = {}
 
-    def get_initial(self, *args, **kwargs):
-        return { 'artwork': get_object_or_404(Art, pk=self.kwargs['pk']) }
-
-    print(context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['artwork'] = get_object_or_404(Art, pk=self.kwargs['pk'])
+        return context
 
     def post(self, request, *args, **kwargs):
         artwork = get_object_or_404(Art, pk=self.kwargs['pk'])
+        request.POST._mutable = True
         if "dislike" in request.POST:
-            logger.error("booga")
-            self.disliking = True
-            request.POST._mutable = True
-            artwork.likes = artwork.likes - 1
+            artwork.dislikes = artwork.dislikes + 1
             artwork.save()
         else:
-            self.disliking = False
             artwork.likes = artwork.likes + 1
             artwork.save()
         new_artwork = Art.objects.order_by('?').first()
         print(new_artwork.id)
         return HttpResponseRedirect(new_artwork.get_absolute_url())        
-'''
-    def form_Valid(self, form):
-        artwork = get_object_or_404(Art, pk=self.kwargs['artwork_id'])
-        print(artwork.id)
-        if(self.disliking == True):
-            artwork.likes -= 1
-        else:
-            artwork.likes += 1
-        form.save()
-        new_artwork = Art.objects.order_by('?').first()
-        print(new_artwork.id)
-        return HttpResponseRedirect(new_artwork.get_absolute_url())
-'''
-'''
-class Mainpage(View):
-    number_of_records = models.Art.objects.count()
-    random_index = int(random.random()*number_of_records)+1
-    random_art = models.Art.get(pk = random_index)
-    template_name = "tindartapp/pp.html"
-'''
+
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
-def ArtW(request): 
+def ArtView(request): 
     if request.method == 'POST': 
         form = ArtForm(request.POST, request.FILES) 
         logger.error(request.user.username)
