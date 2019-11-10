@@ -1,8 +1,11 @@
 from django.shortcuts import render
-
+from django.views.generic.base import TemplateView, View
 from django.http import HttpResponseRedirect
 
 from .forms import UserForm, ArtistForm, ArtForm
+
+class Homepage(TemplateView):
+    template_name = "tindartapp/index.html"
 
 def User(request):
     if request.method == 'POST':
