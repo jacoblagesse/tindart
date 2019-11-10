@@ -2,3 +2,4 @@ django
 gunicorn
 django-heroku
 bootstrap4
+pillow
