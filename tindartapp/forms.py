@@ -1,31 +1,15 @@
 from django import forms
 from django.forms import ModelForm, Textarea
-from tindartapp.models import User, Artist, Art
+from tindartapp.models import Art
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-'''
-class UserForm(ModelForm):
-    class Meta:
-        model = User
-        fields = ('username', 'firstname', 'lastname')
-        widgets = {
-            'name': Textarea(attrs={'cols': 80, 'rows': 20}),
-        }
-'''
-class ArtistForm(ModelForm):
-    class Meta:
-        model = Artist
-        fields = ('username', 'firstname', 'lastname')
-        widgets = {
-            'name': Textarea(attrs={'cols': 80, 'rows': 20}),
-        }
 
 class ArtForm(ModelForm):
     class Meta:
         model = Art
         fields = ('artwork',)
-        widgets = {
-            'name': Textarea(attrs={'cols': 80, 'rows': 20}),
+        labels = {
+            'artwork': (''),
         }
 
 class SignUpForm(UserCreationForm):
