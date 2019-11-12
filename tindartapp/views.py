@@ -61,7 +61,7 @@ def ArtView(request):
             obj = form.save(commit=False)
             obj.user = request.user.username
             form.save()
-            return HttpResponseRedirect('/art/')
+            return HttpResponseRedirect('/redirect')
     else: 
         form = ArtForm() 
     return render(request, 'tindartapp/artform.html', {'form' : form})
