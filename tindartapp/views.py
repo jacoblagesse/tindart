@@ -48,6 +48,11 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
+def redirect(request):
+    artwork = Art.objects.order_by('?').first()
+    random_url = '/main/' + str(artwork.id)
+    return HttpResponseRedirect(random_url)
+
 def ArtView(request): 
     if request.method == 'POST': 
         form = ArtForm(request.POST, request.FILES) 

@@ -131,7 +131,7 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = "/media/"
 
-LOGIN_REDIRECT_URL = '/main/e9b6146d-be9b-4e6f-9c22-0a310a1bab0e/'
+LOGIN_REDIRECT_URL = '/redirect/'
 
 # Configure Django App for Heroku.
 import django_heroku
